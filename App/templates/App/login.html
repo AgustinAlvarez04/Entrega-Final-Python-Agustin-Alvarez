@@ -1,0 +1,23 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Complete sus datos para ingresar</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+<h3>{{ mensaje }}</h3>
+
+<form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input type="submit" value="Ingresar">
+
+</form>
+
+{% endblock %}

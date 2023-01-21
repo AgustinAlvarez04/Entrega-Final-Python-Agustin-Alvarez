@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Mi primera web</title>
+    <style>
+        table, th, td {
+            border: 1xp solid black;  
+        }
+    </style>
+
+</head>
+<body>
+
+<!------------------------ TABLAS --------------------------------->
+
+
+    <table style="width: 500px;"> <!--crea la tabla--> <!-- style="border: 1xp solid black; creo un cuadrado que contenga mi tabla-->
+    <!-- border: 1xp solid black; incluir este parametro en HEAD al principio 
+        para el mismo resultado de esta forma:
+        <style>
+            table, th, td { 
+             border: 1xp solid black;  
+            }
+         </style>-->
+         <!--style="width: 500px;" separa los articulos en el numeroq  le indeiquemos-->
+    
+        <thead>       <!-- agrupar elementos en las cabeceras de las tablas-->
+            <tr> <!-- fila en la tabla-->
+                <th> ARTICULOS</th>
+                <th> PRECIOS</th><!-- Genera Columnas-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> Coca</td><!--defino elementos dentro de las columnas-->
+                <td> Gratis</td>
+            </tr>
+            <tr>
+                 <td> Pepso</td><!--defino elementos dentro de las columnas-->
+                 <td> 10$</td>
+            </tr>
+            <tr>
+                <td> Fanta</td><!--defino elementos dentro de las columnas-->
+                <td> 11$</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td></td>
+            <td>Tota:21$</td>
+        </tfoot>
+</table>
+
+
+
+
+
+
+    <h1> h1 para los titulos</h1>
+    <h2> h2 para los subtitulos</h2>
+    <h3> h3 para los sub subtitulos</h3>
+    <h4> h4 para los sub sub subtitulos</h4>
+    <h5> h5 para los sub sub sub subtitulos</h5>
+    <h6> h6 para los sub sub sub sub subtitulos</h6>
+    <p> etiqueta de parrafo, podemos poner el texto que queramos</p>
+    <p> con otra etiqueta de P se crea otro parrafo en otro renglon</p>
+    <hr> <!-- esto crea una linea donde la pongamos apra dividir secciones-->
+    <!-- los comentarios se realizan con el signo de mayor/menor, exclamasion y dos guiones-->
+    <p> este es un texto un poco <span style="color:blue">largo que los anteriores</span>, <br> 
+        muestra de la etiqueta de span</p>
+        <!-- br nos manda a otra linea el texto donde lo seleccionemos-->
+        <!-- con style en span le cambiamos el color a la palabra seleccionada dentro del span-->
+    <h2> aqui pongo otro subtitlo</h2>
+    <p> vuelvo a escribir un poco mas </p>
+
+<!------------------------ HYPER VINCULO --------------------------------->
+    <a href="https://www.google.com.ar">Ir a google en esta pagina</a> <br><!-- de esta forma, redireccionamos a otra pagina cargandola en la que ya estamos-->
+    <a target="_blank" href="https://www.google.com.ar">Ir a google en otra pagina</a> <!-- redireccionamos para que abra una pestaña nueva-->
+    <br>
+<!------------------------ CARGAR IMAGENES --------------------------------->
+    <img src="images.png" width="100" height="100"> <!-- cargar imagenes, desde la compu o desde internet mediante su link--> 
+    <!-- width toca el tamaño de la imagen en anchura-->
+    <!-- heigt toca el tamaño de la imagen en altura-->
+    <br>
+<!------------------------ FORMULARIOS --------------------------------->
+    <form  action="/formulario" method="POST"> <!--action es el lugar a donde enviare mis datos-->
+        <!--method="POST" y "GET" -->
+        <!-- -->
+        <!-- -->
+    
+
+        <label for="Nombre"> Nombre</label> <!--dato que quiero solicitar--> 
+        <!-- mediante for le asigno un nombre al label-->
+        <input value="Ej:Rodrigo" type="text"  id="Nombre" name="Nombre" placeholder="Ingrese Nombre"/> <!--campo para solicitar informacion del usuario--> 
+        <!-- type le asigno el comportamiento al input-->
+            <!-- type="submit" el campo se transforma en un boton-->
+            <!-- type="text" el campo se transforma en texto-->
+            <!-- type="email" el campo espera recibir un email (@)-->
+            <!-- type="password" el campo oculta el valor que le pasemos-->
+            <!-- type="radio" el campo se transforma en un boton de radio-->
+            <!-- type="checkbox" el campo se transforma en una casilla para marcar-->
+            <!-- type="file" el campo se transforma en un seleccionador de archivos-->
+        <!-- mediante el id hago que al apretar nombre se abra el input-->
+        <!-- name le asigno a una llave un valor--> 
+        <!-- placegolder indicar que insertar en nuestro input-->
+        <!-- value le asigna un valor por defecto a nuestros campos--> <!--no es muy importante su uso-->
+        <br>
+        <label for="Apellido"> Apellido</label> 
+        <input value="Ej:Fernandez" type="text"  id="Apellido" name="Apellido" placeholder="Ingrese Apellido"/>
+        <br>
+        <label for="Comentario">Comentario</label>
+        <br>
+        <textarea cols="50" rows="10" id="Comentario" name="Comentario" placeholder="Ingrese Comentario">Ej: Habia una vez trus..</textarea>  <!--los parametros van adentro de los signos < y > -->
+        <!--crea una caja para comentarios-->
+        <!--rows="numero" para las filas-->
+        <!--cols="numero" para las columnas-->
+        <!--el valor por defecto a nuestros campos se asigna en textarea entre los >< del final del renglon--><!--no es muy importante su uso-->
+        <br>
+        <input type="submit" /> <!-- reune todos los datos ingresados y los envia a la direccion que le indequemos en el form-->
+        <!------------------------ BOTONES EN HTML --------------------------------->
+        <button type="button">Boton</button> <!-- entre el mayor y menor ponemos el nombre que aparecera en el boton-->
+        <button type="reset">Reset</button> 
+        <button type="submit">Mandar</button> 
+        <!-- siempre hay que pasarle un type al button --><!--cuando creamos un botton en un form su valor es submit por defecto-->
+        <!-- type="button" boton comun y corriente-->
+        <!-- type="reset" deja los campos limpios nuevamente-->
+        <!-- type="submit" enviar informacion -->
+
+    </form>
+
+<!------------------------ LISTAS --------------------------------->
+    <!-- LISTA NO ORDENADA, CON PUNTOS AL INICIO-->
+    <ul>
+        <li> Elemento 1</li>
+        <li> Elemento 2</li>
+        <li> Elemento 3</li>
+        <li> Elemento 4</li>
+    </ul>
+    <!-- LISTA ORDENADA, CON NUMEROS AL INICIO-->
+    <ol>
+        <li value="10"> Elemento 1</li> <!-- si le asigno un valor, comenzara a contar desde ese valor-->
+        <li> Elemento 2</li>
+        <li> Elemento 3</li>
+        <li> Elemento 4</li>
+        <li>                            <!--crea listas adentro de listas-->
+            <ol>
+                <li style="list-style-type: lower-alpha;"> sub Elemento 2</li>   <!--style="list-style-type: " le da una presentacion nueva -->
+                <li style="list-style-type: lower-roman;"> sub Elemento 3</li>
+                <li style="list-style-type: lower-greek;"> sub Elemento 4</li>
+            </ol>
+        </li>
+    </ol>
+
+
+
+</body>
+</html>
