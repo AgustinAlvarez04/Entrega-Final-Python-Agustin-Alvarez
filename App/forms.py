@@ -1,16 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+import datetime
 
 class AvatarForm(forms.Form):
     imagen=forms.ImageField(label="Imagen")
-
-class BlogForm(forms.Form):
-    titulo = forms.CharField(label="Titulo", max_length=50)
-    autor = forms.CharField(label="Autor", max_length=50)
-    email = forms.EmailField(label="Email", max_length=70)
-    blog = forms.CharField(label="Blog", max_length=250)
-
+    
 class RegistroUsuarioForm(UserCreationForm):
     
     email= forms.EmailField(label="Email")
@@ -20,7 +15,6 @@ class RegistroUsuarioForm(UserCreationForm):
         model=User
         fields=["username","email", "password1", "password2"]
         help_texts= {k:"" for k in fields}
-
 
 class UserEditForm(UserCreationForm):
     
@@ -34,3 +28,22 @@ class UserEditForm(UserCreationForm):
         model=User
         fields=["email", "password1", "password2", "first_name", "last_name"]
         help_texts= {k:"" for k in fields}
+
+
+
+class BlogForm(forms.Form):
+    titulo = forms.CharField(label="Titulo", max_length=50)
+    subtitulo= forms.CharField(label="Subtitulo", max_length=50)
+    cuerpo = forms.CharField(label="Cuerpo", max_length=250)
+    autor = forms.CharField(label="Autor", max_length=50)
+    fecha = forms.CharField(label="Fecha")
+    imagen= forms.ImageField()
+
+
+
+
+
+
+
+
+

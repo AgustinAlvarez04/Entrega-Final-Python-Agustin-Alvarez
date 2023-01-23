@@ -1,48 +1,47 @@
 {% extends "App/padre.html" %}
 
+{% load static %}
 
 {% block title %}
-    <title>About</title>
+<title>Acerca de Mi</title>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>Informacion Personal</h3>
 {% endblock %}
 
 {% block titulo %}
-<h1 class="mb-5">About</h1>
+<h1 class="mb-5">Acerca de Mi</h1>
 {% endblock %}
 
 
 {% block contenido_que_cambia %}
-
-        <!-- Testimonials-->
         <section class="testimonials text-center bg-light">
             <div class="container">
-                <h2 class="mb-5">What people are saying...</h2>
+                <h2 class="mb-5">Un poco sobre mi y mi proyecto</h2>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="..." />
-                            <h5>Margaret E.</h5>
-                            <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                            <img class="img-fluid rounded-circle mb-3" src="{% static 'App/assets/img/soyyo.png' %}"" alt="..." />
+                            <h5>Agustin Alvarez</h5>
+                            <p class="font-weight-light mb-0">"Mi nombre es Agustin, tengo 19 años y este es mi primer encuentro con lo que la programacion se refiere "</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="..." />
-                            <h5>Fred S.</h5>
-                            <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+                            <img class="img-fluid rounded-circle mb-3" src="{% static 'App/assets/img/proyecto.jfif' %}" alt="..." />
+                            <h5>Mi Proyecto</h5>
+                            <p class="font-weight-light mb-0">"Lo que busque hacer fue en base al prototipo armar otro con las mismas bases y sumarle todo lo que pude, en algunos aspectos me quede corto pero creo que va a quedar genial cuando lo intente volver a hacer."</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
-                            <h5>Sarah W.</h5>
-                            <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+                            <img class="img-fluid rounded-circle mb-3" src="{% static 'App/assets/img/continuacion.jfif' %}" alt="..." />
+                            <h5>Continuacion</h5>
+                            <p class="font-weight-light mb-0">"Di mi mayor esfuerzo, me falta mucho por terminar de aprender de lo visto y planeo poder volver a empezarlo con una base mejorada"</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-{% endblock %}
-
-{% block subtitulo %}
-<h3>Aqui podras leer un poco sobre mi</h3>
 {% endblock %}

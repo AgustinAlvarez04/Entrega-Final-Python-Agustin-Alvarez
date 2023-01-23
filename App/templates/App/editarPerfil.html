@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block titulo %}
-<h1 class="mb-5">Ingrese sus datos</h1>
+<h1 class="mb-5">Editar Perfil: {{ nombreusuario }}</h1>
 {% endblock %}
 
 
@@ -11,12 +11,12 @@
 
 <h3>{{ mensaje }}</h3>
 
-<form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+<form action="{% url 'editarPerfil' %}" method="POST"> {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
 
-    <input type="submit" value="Ingresar">
+    <input type="submit" value="Guardar Cambios">
 
 </form>
 

@@ -1,0 +1,23 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Articulos Completos</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Blogs</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>Crea, reorganiza o elimina tus posts!</h3>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<body>
+    {% for p in blog %}
+        <li>{{p}}</li>
+    {% endfor %}
+</body>
+{% endblock %}

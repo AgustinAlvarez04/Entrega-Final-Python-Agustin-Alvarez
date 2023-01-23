@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -123,9 +124,15 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGOUT_REDIRECT_URL="/App/"
+LOGOUT_REDIRECT_URL="/"
 
 LOGIN_URL='/App/login/'
 
 MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = "uploads/"
 MEDIA_ROOT = BASE_DIR / 'media' 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
