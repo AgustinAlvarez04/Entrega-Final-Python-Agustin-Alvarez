@@ -1,0 +1,19 @@
+
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+
+OBJETIVO                                                  
+Hacer que los botones de los blogs de eliminar y editar funcionen        
+
+Pasos a seguir:
+crear urls
+crear el template, crear el models, crear el forms, y crear el views, hacer que los botones te redireccionen hasta el url
+especifico para cada caso
+
+Puesta a prueba:
+Los botones funcionan pero me falla algo
+
+Funciona:
+No

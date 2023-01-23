@@ -1,0 +1,18 @@
+
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+ESTO LO PEDIAN EN EXCEL, NUNCA USE Y NO TENGO NI IDEA DE COMO USARLO, PERO CUMPLO LA CONSIGNA
+
+OBJETIVO                                                  
+Agregar formularios para subir post         
+
+Pasos a seguir:
+crear urls,crear el tempalte, crear el models, crear el forms, y crear el views, conectarlos a todos y que desencadenen en un formulario
+
+
+Puesta a prueba:
+Los campos del formulario existen, pero no se logran subir por algun error
+
+Funciona:
+No
