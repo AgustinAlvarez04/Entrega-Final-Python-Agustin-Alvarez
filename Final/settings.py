@@ -129,8 +129,8 @@ LOGOUT_REDIRECT_URL="/"
 LOGIN_URL='/App/login/'
 
 MEDIA_URL = '/media/'
-CKEDITOR_UPLOAD_PATH = "uploads/"
 MEDIA_ROOT = BASE_DIR / 'media' 
+CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': None,

@@ -19,6 +19,7 @@
                 <a class="btn btn-primary" href="{% url 'About' %}">Acerca de Mi</a>
                 <a class="btn btn-primary" href="{% url 'Contact' %}">Contacto</a>
                 <a class="btn btn-primary" href="{% url 'Pages' %}">Blogs</a>
+                <a class="btn btn-dark" >Buenvenido: {{ user.username }}</a>
                 <a class="btn btn-danger" href="{% url 'logout' %}">Cerar sesion</a>
                 <a class="btn btn-success" href="{% url 'editarPerfil' %}">Perfil</a>
                 {% else %}

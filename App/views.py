@@ -9,13 +9,39 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.decorators import login_required #para vistas basadas en funciones
 from django.contrib.auth.mixins import LoginRequiredMixin #para vistas basadas en clases
 
-@login_required
+
 def agregarAvatar(request):
+    if request.method=="POST":
+        form=AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            avatar=Avatar(user=request.user, imagen=request.FILES["imagen"])
+            avatarViejo=Avatar.objects.filter(user=request.user)
+            if len(avatarViejo)>0:
+                avatarViejo[0].delete()
+            avatar.save()
+            return render(request , "App/inicio.html", {"mensaje": "Avatar subido correctamente"})
+        else:
+            return render(request , "App/agregarAvatar.html", {"form":form, "usuario":request.user, "mensaje":"Error al subir imagen"})
+    else:
+        form=AvatarForm
+        return render(request , "App/agregarAvatar.html", {"form":form, "usuario":request.user})
+
+
+
+
+
+
+
+
+
+
+@login_required
+def obtenerAvatar(request):
     lista=Avatar.objects.filter(user=request.user)
     if len(lista)!=0:
         avatar=lista[0].imagen.url
     else:
-        avatar="/media/avatars/images.png"
+        avatar="/media/avatars/homero.png"
     return avatar
 
 #------------------------- NAVBAR -----------------------------------#
@@ -121,8 +147,8 @@ def crearBlog(request):
             autor= informacion["autor"]
             fecha= informacion["fecha"]
             imagen= informacion["imagen"]
-            blogs= Blogs( titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen )
-            blogs.save()
+            blog= Blogs( titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen )
+            blog.save()
             return render (request, "App/crearBlog.html", {"mensaje": "Post subido correctamente"})
         else:
             return render (request, "App/crearBlog.html", {"form": form, "mensaje": "Informacion no valida"})
@@ -148,7 +174,7 @@ def editarBlog(request, id):
             blog.autor= info["autor"]
             blog.fecha= info["fecha"]
             blog.imagen= info["imagen"]
-            blogs.save()
+            blog.save()
             blog=Blogs.objects.all()
             return render(request, "App/blogs.html", {"blog":blog, "mensaje": "Profesor editado correctamente"})
         pass
@@ -160,7 +186,7 @@ def editarBlog(request, id):
 def eliminarBlog(request, id):
     blog= Blogs.objects.get(id=id)
     blog.delete()
-    blogs= Blogs.objects.all()
+    blog= Blogs.objects.all()
     return render(request, "App/blogs.html", {"blogs":blog , "mensaje":"Blog eliminado correctamente"})
 
 
