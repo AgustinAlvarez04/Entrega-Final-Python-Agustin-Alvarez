@@ -15,9 +15,16 @@
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<body>
-    {% for p in blog %}
-        <li>{{p}}</li>
+<img src="{{ avatar }}" alt="">
+<ul>
+    <h1>Listado de Blogs</h1>
+
+    {% for k in blog %}
+    <li>{{ blog.titulo }} {{ blog.subtitulo }} {{ blog.autor }}</li>
+    
+    <a class="btn btn-danger" href="{% url 'eliminarBlog' blog.id %}">Eliminar </a>
+    <a class="btn btn-success" href="{% url 'editarBlog' blog.id %}">Editar</a>
     {% endfor %}
-</body>
+
+</ul>
 {% endblock %}

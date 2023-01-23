@@ -8,9 +8,9 @@
 
 
 {% block contenido_que_cambia %}
-
 <h3>{{ mensaje }}</h3>
 
+<img src="{{ avatar }}" alt="">
 <form action="{% url 'editarPerfil' %}" method="POST"> {% csrf_token %}
     <table>
         {{ form.as_table }}
