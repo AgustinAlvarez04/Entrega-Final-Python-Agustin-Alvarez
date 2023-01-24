@@ -1,0 +1,25 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Postea tu Articulo!</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+<h3>{{ mensaje }}</h3>
+
+<form action="{% url 'crearBlog' %}" method="POST"> {% csrf_token %}
+    
+        <p>Titulo: <input type="text" name="titulo"></p>
+        <p>Subtitulo: <input type="text" name="subtitulo"></p>
+        <p>Cuerpo: <input type="text" name="cuerpo"></p>
+        <p>Autor: <input type="text" name="autor"></p>
+
+    <input type="submit" value="Subir Post">
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Editando Blog: {{ blog }}</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+<body>
+    {% for p in blog %}
+        <li>{{p}}</li>  
+        <button>
+            <a href="{% url 'eliminarBlog' p.id %}"> Eliminar</a>
+        </button>
+    {% endfor %}
+    <br>
+</body>
+{% endblock %}

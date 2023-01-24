@@ -1,0 +1,28 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Resultados Busqueda</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+<h3>{{ mensaje }}</h3>
+
+{% if blog %} 
+
+<h2>Lista de cursos</h2>
+{% for blog in blog %}
+<h3>{{ blog.nombre }} - {{ blog.comision }}</h3>
+
+{% endfor %}
+
+{% else %} 
+
+<h2>No hay blogs</h2>
+
+{% endif %}
+{% endblock %}
+

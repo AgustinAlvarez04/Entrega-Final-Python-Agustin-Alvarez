@@ -1,0 +1,30 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Articulos Completos</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Blogs</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>Crea, reorganiza o elimina tus posts!</h3>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<img src="{{ avatar }}" alt="">
+<ul>
+    <h1>Listado de Blogs</h1>
+
+    {% for k in blog %}
+    <li>{{ blog.titulo }} {{ blog.subtitulo }} {{ blog.autor }}</li>
+    
+    <a class="btn btn-danger" href="{% url 'eliminarBlog' blog.id %}">Eliminar </a>
+    <a class="btn btn-success" href="{% url 'editarBlog' blog.id %}">Editar</a>
+    {% endfor %}
+
+</ul>
+{% endblock %}

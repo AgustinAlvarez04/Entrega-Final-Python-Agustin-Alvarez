@@ -1,0 +1,27 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Seccion Perfiles</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+<img src="{{ avatar }}" alt="">
+<ul>
+    <h1>Perfiles</h1>
+
+    {% for perfil in Perfil %}
+    <li>{{ perfil.nombre }} {{ perfil.apellido }} - {{ perfil.edad }}</li>
+
+    <a class="btn btn-success" href="{% url 'editarPerfil'  perfil.id  %}">Editar</a>
+    {% endfor %}
+
+
+</ul> 
+
+<h2>{{ mensaje }}</h2>
+<a class="btn btn-primary" href="{% url 'register'  %}">Agregar usuario</a>
+{% endblock %}

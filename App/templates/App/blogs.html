@@ -1,0 +1,90 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Articulos Completos</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Blogs</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>Crea, reorganiza o elimina tus posts!</h3>
+{% endblock %}
+
+<h1>{{ mensaje }}</h1>
+
+{% block contenido_que_cambia %}
+
+<body>
+    <header>
+        <h1>Blogs</h1>
+    </header>
+    <section class="container">
+        <article>
+            <a class="btn btn-dark" href="http://127.0.0.1:8000/crearBlog/">Agregar Articulo Nuevo</a>
+        </article>
+        <article class="post">
+            <h2>El año 2019 marca nuevos récords de calor, retroceso de los hielos y subida del nivel del mar</h2>
+            <p>El año 2019 cierra una década de valores excepcionales de calor y fenómenos meteorológicos de efectos devastadores a escala mundial, alerta la Organización Meteorológica Mundial</p>
+            <img src="{% static 'App/assets/img/post1.jpg' %}" width="700"/>
+            <p>Las concentraciones de dióxido de carbono en la atmósfera alcanzaron un nuevo máximo histórico de 407,8 partes por millón en 2018, y en 2019 no dejaron de aumentar. Ese gas permanece en la atmósfera durante siglos, y en los océanos durante períodos todavía más prolongados, de modo que perpetúa el cambio climático.</p>
+            <p>Según el informe, se ha constatado que, desde 1993, cuando se empezaron a realizar mediciones satelitales, la subida del nivel del mar se ha acelerado a causa de la fusión de los mantos de hielo de Groenlandia y la Antártida.</p>
+            <p>El océano hace las veces de amortiguador al absorber calor y dióxido de carbono, pero ello acarrea graves consecuencias. El calor acumulado en las aguas oceánicas ha alcanzado niveles sin precedentes y se han producido olas de calor marinas generalizadas. La acidez del agua del mar ha aumentado un 26 % desde el inicio de la era industrial. Como resultado, ecosistemas marinos de vital importancia se están degradando.</p>
+            <p>El valor mínimo de extensión diaria del hielo marino en el Ártico de septiembre de 2019 fue el segundo más bajo desde que se tienen registros satelitales, y en el mes de octubre también se establecieron récords de extensión mínima. Por su parte, en la Antártida, las extensiones de hielo registraron valores mínimos sin precedentes en algunos meses de 2019.</p>
+            
+            
+            <a class="btn btn-danger" href="#">Eliminar </a>
+            <a class="btn btn-success" href="#">Editar</a>
+            
+
+        </article>
+        <br>
+        <br>
+        <br>
+        <article class="post">
+            <h2>Aumentan las señales y consecuencias del cambio climático</h2>
+            <p>Diversos organismos destacan en un informe las crecientes señales y consecuencias del cambio climático en la atmósfera, la tierra y los océanos</p>
+            <img src="{% static 'App/assets/img/post2.jpg' %}" width="700"/>
+            <p>En un nuevo informe compilado por la Organización Meteorológica Mundial (OMM) y una amplia red de asociados se hace hincapié en las señales físicas que nos alertan del cambio climático, como el aumento del contenido calorífico de los océanos y de la tierra, la aceleración de la subida del nivel del mar y la fusión de los hielos. En el documento se ponen de manifiesto los impactos de los fenómenos meteorológicos y climáticos en el desarrollo socioeconómico, la salud de las personas, las migraciones y desplazamientos, la seguridad alimentaria y los ecosistemas terrestres y marinos.</p>
+            <p>La Declaración de la OMM sobre el estado del clima mundial en 2019 integra aportaciones de Servicios Meteorológicos e Hidrológicos Nacionales (SMHN), expertos internacionales de primer orden, instituciones científicas y organismos de las Naciones Unidas. En ese informe de referencia se facilita información fidedigna a las instancias normativas sobre la necesidad de adoptar medidas en la esfera del clima.</p>
+            <p>En el documento se confirma lo que ya se avanzó en una declaración provisional publicada con motivo de la celebración de la Conferencia de las Partes (COP) en la Convención Marco de las Naciones Unidas sobre el Cambio Climático (CMNUCC) en diciembre: 2019 fue el segundo año más cálido del que se tienen datos desde que se realizan mediciones instrumentales. El quinquenio 2015-2019 comprende los cinco años más cálidos de los que se tiene constancia, y el período de 2010 a 2019 ha sido el decenio más cálido jamás registrado. A partir de los años ochenta, cada nuevo decenio ha sido más cálido que todos los anteriores desde 1850.</p>
+            <p>El año 2019 terminó con una temperatura media mundial 1,1 °C por encima de los niveles preindustriales estimados, un valor superado únicamente por el récord de 2016, cuando un episodio muy intenso de El Niño agravó el aumento de la temperatura media mundial vinculado a la tendencia general al calentamiento.</p>
+        
+            
+            <a class="btn btn-danger" href="#">Eliminar </a>
+            <a class="btn btn-success" href="#">Editar</a>
+            
+
+        </article>
+        <br>
+        <br>
+        <br>
+        <article class="post">
+            <h2>El impacto del COVID-19 será temporal, el del cambio climático será masivo</h2>
+            <p>En 2019, se alcanzó un nivel récord en el nivel del mar y en olas de calor con consecuencias trágicas para la biodiversidad</p>
+            <img src="{% static 'App/assets/img/post3.jpg' %}" width="700"/>
+            <p>En 2019, el calentamiento global tuvo consecuencias sobre la salud, la comida y el hogar de millones de personas en el mundo. Además, puso en riesgo la vida marina y una gran cantidad de ecosistemas, asegura el informe sobre el Estado del Clima Mundial publicado este martes por la Organización Meteorológica Mundial.</p>
+            <p>Durante la presentación del informe, el Secretario General de la ONU y el líder de la OMM, declararon que a pesar de que en este momento existe una preocupación mundial por el coronavirus, no deben reducirse los esfuerzos en la lucha contra el cambio climático</p>
+            <p>El Secretario se refirió además a la reducción de las emisiones en China y otros países a raíz de la epidemia y dijo que no se pueden sobreestimar estos hechos que son temporales.</p>
+            <p>"No vamos a combatir el cambio climático con un virus. Aunque se le debe dar toda la atención necesaria, no podemos olvidarnos de la lucha contra el cambio climático, y los demás problemas que enfrenta el mundo", dijo.</p>
+            
+           
+            <a class="btn btn-danger" href="#">Eliminar </a>
+            <a class="btn btn-success" href="#">Editar</a>
+           
+
+        </article>
+        <br>
+        <br>
+        <br>
+        <article>
+            <a class="btn btn-dark" href="http://127.0.0.1:8000/crearBlog/">Agregar Articulo Nuevo</a>
+        </article>
+    </section>
+</body>
+</html>
+    
+{% endblock %}
