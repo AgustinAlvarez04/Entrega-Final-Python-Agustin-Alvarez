@@ -1,2 +1,0 @@
-﻿# Final---Agustin-Alvarez
-Mi nombre es Agustin Alvarez, en mi web en el home encontraran una vista de lo que encontraremos en las demas paginas, en contact cree botones que te redirigen a mis redes privadas, en acerca de mi conte muy breve informacion personal y algo mas sobre el proyecto, en blogs hay articulos para leer y asi tambien para agregar, modificar y elimnar tus propios articulos, en perfil podras cambiar tus datos y subir nuevos avatars. Y algunas cosas mas que se veran notorias al entrar al proyecto
