@@ -12,10 +12,10 @@ class Avatar(models.Model):
 class Blog(models.Model):
     titulo= models.CharField(max_length=60)
     subtitulo= models.CharField(max_length=70)
-    cuerpo=RichTextField(max_length=3000)
+    imagen= models.ImageField(upload_to="imagenes")
+    cuerpo= RichTextField(max_length=3000)
     autor= models.CharField(max_length=30)
     fecha= models.CharField(max_length=30)
-    imagen= models.ImageField(upload_to="imagenes")
     def __str__(self):
         return f"{self.titulo} - {self.autor}"
 
@@ -25,5 +25,8 @@ class Perfil(models.Model):
     edad=models.IntegerField()
     email=models.EmailField()
     descripcion=models.CharField(max_length=60)
-    imagen= models.ImageField(upload_to="avatars")
+    imagen= models.ImageField(upload_to="imagenes")
     user= models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return f"{self.nombre} - {self.apellido}"
+

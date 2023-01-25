@@ -2,24 +2,39 @@
 
 {% load static %}
 
+{% block title %}
+<title>Crear Blog</title>
+{% endblock %}
+
 {% block titulo %}
 <h1 class="mb-5">Postea tu Articulo!</h1>
 {% endblock %}
 
 
 {% block contenido_que_cambia %}
-
-<h3>{{ mensaje }}</h3>
-
-<form action="{% url 'crearBlog' %}" method="POST"> {% csrf_token %}
+<article>
+    <ul>
+        <h3>{{ mensaje }}</h3>
+        <form action="{% url 'crearBlog' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+        
+             </table>
     
-        <p>Titulo: <input type="text" name="titulo"></p>
-        <p>Subtitulo: <input type="text" name="subtitulo"></p>
-        <p>Cuerpo: <input type="text" name="cuerpo"></p>
-        <p>Autor: <input type="text" name="autor"></p>
+            <input type="submit" value="Subir Post">
+    
+        </form>
+    </ul>
+</article>
+{% endblock %}
 
-    <input type="submit" value="Subir Post">
 
-</form>
 
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="#">Volver Para Arriba</a>
+
+    
+</section>
 {% endblock %}

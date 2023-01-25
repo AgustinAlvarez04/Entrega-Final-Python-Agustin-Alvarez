@@ -12,9 +12,18 @@
     {% for p in blog %}
         <li>{{p}}</li>  
         <button>
-            <a href="{% url 'eliminarBlog' p.id %}"> Eliminar</a>
+            <a href="{% url 'eliminarBlog' p.id %}" enctype="multipart/form-data"> Eliminar</a>
         </button>
     {% endfor %}
     <br>
 </body>
+{% endblock %}
+
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="#">Volver Para Arriba</a>
+
+    
+</section>
 {% endblock %}

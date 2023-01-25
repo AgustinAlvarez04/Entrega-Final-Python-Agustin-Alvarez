@@ -2,22 +2,27 @@
 
 {% load static %}
 
+{% block title %}
+<title>Editar Blog</title>
+{% endblock %}
+
 {% block titulo %}
 <h1 class="mb-5">Editando Blog: {{ blog }}</h1>
 {% endblock %}
 
 
 {% block contenido_que_cambia %}
-
 <h3>{{ mensaje }}</h3>
-
-<form action="{% url 'editarBlog' blog.id %}" method="POST"> {% csrf_token %}
+<form action="{% url 'editarBlog' blog.id %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-
     <input type="submit" value="Guardar Cambios">
-
 </form>
+{% endblock %}
 
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="#">Volver Para Arriba</a>
+</section>
 {% endblock %}

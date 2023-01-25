@@ -19,13 +19,12 @@ def agregarAvatar(request):
             if len(avatarViejo)>0:
                 avatarViejo[0].delete()
             avatar.save()
-            return render(request , "App/inicio.html", {"mensaje": "Avatar subido correctamente"})
+            return render(request , "App/perfil.html", {"avatar":avatar, "mensaje": "Avatar subido correctamente"})
         else:
             return render(request , "App/agregarAvatar.html", {"form":form, "usuario":request.user, "mensaje":"Error al subir imagen"})
     else:
         form=AvatarForm
         return render(request , "App/agregarAvatar.html", {"form":form, "usuario":request.user})
-
 @login_required
 def obtenerAvatar(request):
     lista=Avatar.objects.filter(user=request.user)
@@ -34,9 +33,7 @@ def obtenerAvatar(request):
     else:
         avatar="/media/avatars/homero.png"
     return avatar
-
 #------------------------- NAVBAR -----------------------------------#
-
 def inicio(request):
     return render(request, "App/inicio.html")
 @login_required
@@ -49,28 +46,9 @@ def contact(request):
 def pages(request):
     return render(request, 'App/pages.html')
 @login_required
-def resultados(request):
-    return render(request, 'App/resultados.html') 
-@login_required
 def blogs(request):
     return render(request, 'App/blogs.html') 
-
-
-#--------------------------------- BUSCADORES --------------------------------------#
-@login_required
-def buscarBlog(request):
-    return render(request, "App/buscarBlog.html")
-@login_required
-def buscar(request):
-        blog= request.GET['blog']
-        if blog != "":
-            blog= Blog.objects.filter(blog__icontains=blog)
-            return render(request, "App/resultados.html", {"blog": blog})
-        else:
-            return render(request, "App/buscarBlog.html", {"mensaje": "Ingresaste un blog equivocado"})
-
 #--------------------------------- CREACION DE USUARIOS --------------------------------------#
-
 def register(request):
     if request.method=="POST":
         form= RegistroUsuarioForm(request.POST)
@@ -102,18 +80,13 @@ def login_request(request):
     else:    
         form= AuthenticationForm()
         return render(request, "App/login.html", {"form":form})
-
 @login_required
 def perfil(request):
     perfil=Perfil.objects.all()
     return render(request, "App/perfil.html", {"perfil": perfil, "avatar": obtenerAvatar(request)})
-
-
-
 @login_required
 def editarPerfil(request):
-    usuario=request.user
-    
+    usuario=request.user  
     if request.method=="POST":
         form=UserEditForm(request.POST)
         if form.is_valid():
@@ -130,35 +103,58 @@ def editarPerfil(request):
     else:
         form=UserEditForm(instance=usuario)
         return render(request, "App/editarPerfil.html", {"form":form , "nombreusuario": usuario.username})
-
+#--------------------------------- BUSCADORES --------------------------------------#
+@login_required
+def buscarBlog(request):
+    return render(request, "App/buscarBlog.html")
+@login_required
+def buscar(request):
+    titulo=request.GET['titulo']
+    if titulo!="":
+        blog=Blog.objects.filter(titulo__icontains=titulo)
+        return render(request, "App/resultadosBlog.html", {"blog":blog})
+    else:
+        return render(request, "App/buscarBlog.html", {"mensaje":"Ingresa un titulo para buscar!"})
+@login_required
+def resultadosBlog(request):
+    return render(request, 'App/resultados.html')  
 #--------------------------------- CREACION DE FORMULARIOS --------------------------------------#
-
+#--------------------------------- CRUD --------------------------------------#
 @login_required
 def crearBlog(request):
-    if request.method=="POST":
-        titulo=request.POST["titulo"]
-        subtitulo=request.POST["subtitulo"]
-        cuerpo=request.POST["cuerpo"]
-        autor=request.POST["autor"]
-        fecha=request.POST["fecha"]
-        imagen=request.POST["imagen"]
-        blog= Blog(titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen)
-        blog.save()
-        return render (request, "App/blogs.html" ,{"mensaje": "Blog subido correctamente"})
-
-    else:
-        return render (request, "App/crearBlog.html")
-
+    if request.method=="POST": #si viene por post..
+        form= BlogForm(request.POST, request.FILES) #guardo la informacion
+        if form.is_valid(): #si es valido..
+            informacion=form.cleaned_data#guardo y paso la info de formulario a diccionario
+            titulo=informacion["titulo"] #armo el formulario
+            subtitulo=informacion["subtitulo"]
+            cuerpo=informacion["cuerpo"]
+            autor=informacion["autor"]
+            fecha=informacion["fecha"]
+            imagen=informacion["imagen"]
+            blog=Blog(titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen)#creo el blog
+            blog.save()#lo guardo
+            return render (request, "App/blogs.html" ,{"mensaje": "Blog subido correctamente"})#y lo envio a donde lo hice bien
+        else:#si salio mal..
+            return render (request, "App/crearBlog.html", {"form":form , "mensaje":"Informacio no valida"})#lo vuelvo a mandar y le digo q esta mal hecho
+    else:#y si viene por GET
+        formulario= BlogForm()#creo el formulario vacio
+        return render (request, "App/crearBlog.html", {"form":formulario})#y se lo mando
 @login_required
-def leerBlogs(request):
+def leerBlog(request):
+    blog= Blog.objects.all()
+    return render(request, "App/leerBlog.html", {"blog":blog})
+@login_required
+def eliminarBlog(request, id):
+    blog=Blog.objects.get(id=id)
+    blog.delete()
     blog=Blog.objects.all()
-    return render(request, "App/blogs.html", {"blog":blog})
-
+    return render(request, "App/leerBlog.html", {"blog":blog, "mensaje":"¡Blog borrado correctamente!"})
 @login_required
 def editarBlog(request, id):
     blog=Blog.objects.get(id=id)
     if request.method=="POST":
-        form=BlogForm(request.POST)
+        form=BlogForm(request.POST, request.FILES)
         if form.is_valid():
             info=form.cleaned_data
             blog.titulo= info["titulo"]
@@ -166,28 +162,19 @@ def editarBlog(request, id):
             blog.cuerpo= info["cuerpo"]
             blog.autor= info["autor"]
             blog.fecha= info["fecha"]
-            blog.imagen= info["imagen"]
             blog.save()
             blog=Blog.objects.all()
-            return render(request, "App/blogs.html", {"blog":blog, "mensaje": "Profesor editado correctamente"})
+            return render(request, "App/leerBlog.html", {"blog":blog, "mensaje": "Articulo editado correctamente"})
         pass
     else:
-        formulario= BlogForm(initial={"titulo":blog.titulo, "subtitulo":blog.subtitulo, "cuerpo":blog.cuerpo, "autor":blog.autor, "fecha":blog.fecha, "imagen":blog.imagen})
+        formulario= BlogForm(initial={"titulo":blog.titulo, "subtitulo":blog.subtitulo, "cuerpo":blog.cuerpo, "autor":blog.autor, "fecha":blog.fecha})
         return render(request, "App/editarBlog.html", {"form":formulario, "blog":blog })
 
+#--------------------------------- CREACION DE PERFILES --------------------------------------#
+#--------------------------------- CRUD --------------------------------------#
 @login_required
-def eliminarBlog(request, id):
-    blog= Blog.objects.get(id=id)
-    blog.delete()
-    blog= Blog.objects.all()
-    return render(request, "App/blogs.html", {"blogs":blog , "mensaje":"Blog eliminado correctamente"})
-
-
-
-
-
-
-
+def crearPerfil(request):
+    return render(request, "App/crearPerfil.html")
 
 
 

@@ -6,22 +6,26 @@
 <h1 class="mb-5">Agregando avatar de: {{ usuario.username }} </h1>
 {% endblock %}
 
-{% block contenido_que_cambia %}
+{% block subtitulo %}
 <h3>{{ mensaje }}</h3>
+{% endblock %}
 
-<form action="{% url 'agregarAvatar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+{% block contenido_que_cambia %}
+<article>
+    <ul>
+        <h3>Busque en sus archivos la imagen que desea usar como avatar!</h3>
+        <form action="{% url 'agregarAvatar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Agregar Avatar">
+        </form>
+    </ul>
+</article>
+{% endblock %}
 
-    <table>
-    
-        {{ form.as_table }}
-    
-    </table>
-    
-    <input type="submit" value="Agregar Avatar">
-    
-    
-    </form>
-
-    {{ mensaje }}
-
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/perfil/">Volver A Perfil</a>    
+</section>
 {% endblock %}

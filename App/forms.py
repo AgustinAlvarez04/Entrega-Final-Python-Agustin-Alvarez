@@ -1,4 +1,7 @@
 from django import forms
+from django.forms import ModelForm
+from .models import *
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 import datetime
@@ -34,9 +37,19 @@ class UserEditForm(UserCreationForm):
 class BlogForm(forms.Form):
     titulo= forms.CharField(label="Titulo", max_length=50)
     subtitulo= forms.CharField(label="Subtitulo", max_length=50)
-    cuerpo= forms.CharField(label="Cuerpo", max_length=50)
+    cuerpo= forms.CharField(label="Cuerpo", max_length=3000)
     autor= forms.CharField(label="Autor", max_length=50)
+    fecha= forms.CharField(label="Fecha", max_length=50)
+    imagen= forms.ImageField(label="Imagen")
+    
 
+class PerfilForm(forms.Form):
+    nombre= forms.CharField(label="Nombre", max_length=60)
+    apellido= forms.CharField(label="Apellido", max_length=60)
+    edad= forms.IntegerField(label="Edad")
+    email= forms.EmailField(label="Email")
+    descripcion= forms.CharField(label="Descripcion", max_length=60)
+    imagen= forms.ImageField(label="Imagen")
 
 
 

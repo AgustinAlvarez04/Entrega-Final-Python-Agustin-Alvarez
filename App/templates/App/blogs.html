@@ -11,21 +11,31 @@
 {% endblock %}
 
 {% block subtitulo %}
-<h3>Crea, reorganiza o elimina tus posts!</h3>
-{% endblock %}
+
+<h3>Que disfrutes tu lectura!</h3>
 
 <h1>{{ mensaje }}</h1>
+
+{% endblock %}
+
+<h4>{{ mensaje }}</h4>
 
 {% block contenido_que_cambia %}
 
 <body>
     <header>
-        <h1>Blogs</h1>
+        <h1>Articulos Completos:</h1>
     </header>
     <section class="container">
+        <br>
+        <br>
         <article>
             <a class="btn btn-dark" href="http://127.0.0.1:8000/crearBlog/">Agregar Articulo Nuevo</a>
+            <a class="btn btn-dark" href="http://127.0.0.1:8000/buscarBlog/">Buscar Articulo</a>
+            <a class="btn btn-dark" href="http://127.0.0.1:8000/leerBlog/">Inspecciona Tus Publicaciones</a>
         </article>
+        <br>
+        <br>
         <article class="post">
             <h2>El año 2019 marca nuevos récords de calor, retroceso de los hielos y subida del nivel del mar</h2>
             <p>El año 2019 cierra una década de valores excepcionales de calor y fenómenos meteorológicos de efectos devastadores a escala mundial, alerta la Organización Meteorológica Mundial</p>
@@ -35,9 +45,6 @@
             <p>El océano hace las veces de amortiguador al absorber calor y dióxido de carbono, pero ello acarrea graves consecuencias. El calor acumulado en las aguas oceánicas ha alcanzado niveles sin precedentes y se han producido olas de calor marinas generalizadas. La acidez del agua del mar ha aumentado un 26 % desde el inicio de la era industrial. Como resultado, ecosistemas marinos de vital importancia se están degradando.</p>
             <p>El valor mínimo de extensión diaria del hielo marino en el Ártico de septiembre de 2019 fue el segundo más bajo desde que se tienen registros satelitales, y en el mes de octubre también se establecieron récords de extensión mínima. Por su parte, en la Antártida, las extensiones de hielo registraron valores mínimos sin precedentes en algunos meses de 2019.</p>
             
-            
-            <a class="btn btn-danger" href="#">Eliminar </a>
-            <a class="btn btn-success" href="#">Editar</a>
             
 
         </article>
@@ -53,9 +60,7 @@
             <p>En el documento se confirma lo que ya se avanzó en una declaración provisional publicada con motivo de la celebración de la Conferencia de las Partes (COP) en la Convención Marco de las Naciones Unidas sobre el Cambio Climático (CMNUCC) en diciembre: 2019 fue el segundo año más cálido del que se tienen datos desde que se realizan mediciones instrumentales. El quinquenio 2015-2019 comprende los cinco años más cálidos de los que se tiene constancia, y el período de 2010 a 2019 ha sido el decenio más cálido jamás registrado. A partir de los años ochenta, cada nuevo decenio ha sido más cálido que todos los anteriores desde 1850.</p>
             <p>El año 2019 terminó con una temperatura media mundial 1,1 °C por encima de los niveles preindustriales estimados, un valor superado únicamente por el récord de 2016, cuando un episodio muy intenso de El Niño agravó el aumento de la temperatura media mundial vinculado a la tendencia general al calentamiento.</p>
         
-            
-            <a class="btn btn-danger" href="#">Eliminar </a>
-            <a class="btn btn-success" href="#">Editar</a>
+         
             
 
         </article>
@@ -71,20 +76,24 @@
             <p>El Secretario se refirió además a la reducción de las emisiones en China y otros países a raíz de la epidemia y dijo que no se pueden sobreestimar estos hechos que son temporales.</p>
             <p>"No vamos a combatir el cambio climático con un virus. Aunque se le debe dar toda la atención necesaria, no podemos olvidarnos de la lucha contra el cambio climático, y los demás problemas que enfrenta el mundo", dijo.</p>
             
-           
-            <a class="btn btn-danger" href="#">Eliminar </a>
-            <a class="btn btn-success" href="#">Editar</a>
-           
+          
 
         </article>
         <br>
         <br>
         <br>
         <article>
-            <a class="btn btn-dark" href="http://127.0.0.1:8000/crearBlog/">Agregar Articulo Nuevo</a>
+            <a class="btn btn-dark" href="#">Volver Para Arriba</a>
+            
         </article>
     </section>
 </body>
 </html>
     
+{% endblock %}
+
+
+
+{% block cambiar_boton_final %}
+
 {% endblock %}

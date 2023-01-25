@@ -19,9 +19,9 @@
                 <a class="btn btn-primary" href="{% url 'About' %}">Acerca de Mi</a>
                 <a class="btn btn-primary" href="{% url 'Contact' %}">Contacto</a>
                 <a class="btn btn-primary" href="{% url 'Pages' %}">Blogs</a>
-                <a class="btn btn-dark" >Bienvenido: {{ user.username }}</a>
+                <a class="btn btn-dark" target="_blank" href="http://127.0.0.1:8000/admin" >Bienvenido: {{ user.username }}</a>
                 <a class="btn btn-danger" href="{% url 'logout' %}">Cerar sesion</a>
-                <a class="btn btn-success" href="{% url 'editarPerfil' %}">Perfil</a>
+                <a class="btn btn-success" href="{% url 'perfil' %}">Perfil</a>
                 {% else %}
                 <a class="btn btn-primary" href="{% url 'register' %}">Registrar</a>
                 <a class="btn btn-primary" href="{% url 'login' %}">Ingresar</a>
@@ -60,11 +60,12 @@
         <p></p>
         <p></p>
         <p></p>
+        {% block cambiar_boton_final %}
         <section>
             <a class="btn btn-dark" href="#">Volver Para Arriba</a>
 
             
         </section>
-
+        {% endblock %}
     </body>
 </html>

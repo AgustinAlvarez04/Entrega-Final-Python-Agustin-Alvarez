@@ -1,0 +1,35 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Resultados Busqueda</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Blogs encontrados:</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+<form action="{% url 'resultadosBlog' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}"
+</form>
+{% if blog %}
+<h2>Resultados de su busqueda:</h2>
+{% for k in blog %}
+
+<h3>{{ k.titulo }} - {{ k.autor }} - {{ k.fecha }}</h3>
+
+{% endfor %}
+
+{% else %}
+
+<h3>No hay resultados similares, vuelve a intentarlo</h3>
+<a class="btn btn-dark" href="{% url 'buscarBlog' %}">Buscar</a>
+{% endif %}
+{% endblock %}
+
+
+{% block cambiar_boton_final %}
+
+{% endblock %}

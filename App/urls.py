@@ -8,26 +8,29 @@ urlpatterns= [
     path('contact/', contact, name="Contact"),
     path('pages/', pages, name="Pages" ),
     path("blogs/", blogs, name="Blogs"),
+    path("perfil/", perfil, name="perfil"),
+    
+    path("agregarAvatar/", agregarAvatar, name="agregarAvatar"),
 
     path("register/", register, name="register"),
     path("login/", login_request, name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
 
-    path("perfil/", perfil, name="perfil"),
-    path("editarPerfil/", editarPerfil, name="editarPerfil"),
-    path("agregarAvatar/", agregarAvatar, name="agregarAvatar"),
-    
-    path("buscar/", buscar, name="buscar"),
-    path("resultados/", resultados, name="resultados"),
-    path("buscarBlog/", buscarBlog, name="buscarBlog"),
-
     path("crearBlog/", crearBlog, name="crearBlog"),
-    path("leerBlogs/", leerBlogs, name="leerBlogs"),
-    path("editarBlog/<id>", editarBlog, name="editarBlog"),
+    path("buscarBlog/", buscarBlog, name="buscarBlog"),
+    path("buscar/", buscar, name="buscar"),
+    path("resultadosBlog/", resultadosBlog, name="resultadosBlog"),
+    path("leerBlog/", leerBlog, name="leerBlog"),
     path("eliminarBlog/<id>", eliminarBlog, name="eliminarBlog"),
+
     
+    path("editarBlog/<id>", editarBlog, name="editarBlog"),
+    
+    
+    path("crearPerfil/", crearPerfil, name="crearPerfil"),
+    path("editarPerfil/", editarPerfil, name="editarPerfil"),
 
 
-
+    
 
 ]

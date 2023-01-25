@@ -2,26 +2,35 @@
 
 {% load static %}
 
+{% block title %}
+<title>Perfil</title>
+{% endblock %}
+
 {% block titulo %}
-<h1 class="mb-5">Seccion Perfiles</h1>
+<h1 class="mb-5">Seccion Perfil</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>{{ mensaje }}</h3>
 {% endblock %}
 
 
 {% block contenido_que_cambia %}
 
-<img src="{{ avatar }}" alt="">
 <ul>
-    <h1>Perfiles</h1>
-
-    {% for perfil in Perfil %}
-    <li>{{ perfil.nombre }} {{ perfil.apellido }} - {{ perfil.edad }}</li>
-
-    <a class="btn btn-success" href="{% url 'editarPerfil'  perfil.id  %}">Editar</a>
-    {% endfor %}
-
-
+    <h1>Informacion Personal</h1>
+    <a class="btn btn-primary" href="{% url 'crearPerfil' %}">Agregar Mas Informacion Personal</a>
+    <a class="btn btn-primary" href="{% url 'editarPerfil'  %}">Editar Datos De Inicio De Sesion</a>
+    <a class="btn btn-primary" href="{% url 'agregarAvatar'  %}">Agregar Avatar</a>
 </ul> 
+<form action="{% url 'perfil' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    
+</form>
+{% endblock %}
 
-<h2>{{ mensaje }}</h2>
-<a class="btn btn-primary" href="{% url 'register'  %}">Agregar usuario</a>
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/">Regresar Al Home</a>
+</section>
 {% endblock %}

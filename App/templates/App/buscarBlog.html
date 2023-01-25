@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block title %}
+<title>Busqueda</title>
+{% endblock %}
+
 {% block titulo %}
 <h1 class="mb-5">Buscar Blogs</h1>
 {% endblock %}
@@ -13,7 +17,7 @@
 
 <form action="{% url 'buscar' %}" method="GET">
 
-    <input type=""number" name="comision" id="comision" placeholder="Ingrese Blog">
+    <input type=""number" name="titulo" id="titulo" placeholder="Ingrese Titulo">
 
     <input type="submit" value="Buscar">
     
@@ -23,3 +27,10 @@
 {% endblock %}
 
 
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="#">Volver Para Arriba</a>
+
+    
+</section>
+{% endblock %}

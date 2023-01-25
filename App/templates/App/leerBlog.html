@@ -1,0 +1,51 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Lecturas</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Blogs</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>Crea, reorganiza o elimina tus posts!</h3>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<form action="{% url 'leerBlog' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}"
+    <article>
+        <ul>
+            <h1> Tus publicaciones</h1>
+            <a class="btn btn-dark" href="{% url 'crearBlog' %}">Crea un nuevo blog</a>
+            <a class="btn btn-dark" href="http://127.0.0.1:8000/admin/App/blog/">Edicion desde panel de Admin con Ckeditor</a>
+            <h2>{{ mensaje }}</h2>
+            <hr>
+            {% for k in blog %} 
+            <br>
+            <li>Titulo: {{ k.titulo }}</li>
+            <li>Subtitulo: {{ k.subtitulo }}</li>
+            <li>Foto: {{ k.imagen }}</li>
+            <li><label for="comentario">Cuerpo del articulo:</label></li>
+            <textarea cols="160" rows="10" id="comentario"> {{ k.cuerpo }}</textarea>
+            <li>Autor: {{ k.autor }}</li>
+            <li>Fecha publicado: {{ k.fecha }}</li>
+            <br>
+            <a class="btn btn-danger" href="{% url 'eliminarBlog' k.id %}">Eliminar </a>
+            <a class="btn btn-success" href="{% url 'editarBlog' k.id %}">Editar</a>
+            <hr>
+            <br>
+            {% endfor %}
+        </ul>
+    </article>
+</form>
+{% endblock %}
+
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/admin/App/blog/' {{ k.id }} ">Edicion Con Ckeditor</a>
+</section>
+{% endblock %}
