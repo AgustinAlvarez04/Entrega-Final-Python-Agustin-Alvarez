@@ -26,7 +26,6 @@ class Perfil(models.Model):
     email=models.EmailField()
     descripcion=models.CharField(max_length=60)
     imagen= models.ImageField(upload_to="imagenes")
-    user= models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return f"{self.nombre} - {self.apellido}"
 

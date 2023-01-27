@@ -8,7 +8,7 @@ urlpatterns= [
     path('contact/', contact, name="Contact"),
     path('pages/', pages, name="Pages" ),
     path("blogs/", blogs, name="Blogs"),
-    path("perfil/", perfil, name="perfil"),
+    
     
     path("agregarAvatar/", agregarAvatar, name="agregarAvatar"),
 
@@ -22,15 +22,6 @@ urlpatterns= [
     path("resultadosBlog/", resultadosBlog, name="resultadosBlog"),
     path("leerBlog/", leerBlog, name="leerBlog"),
     path("eliminarBlog/<id>", eliminarBlog, name="eliminarBlog"),
-
-    
     path("editarBlog/<id>", editarBlog, name="editarBlog"),
     
-    
-    path("crearPerfil/", crearPerfil, name="crearPerfil"),
-    path("editarPerfil/", editarPerfil, name="editarPerfil"),
-
-
-    
-
 ]

@@ -19,7 +19,7 @@ def agregarAvatar(request):
             if len(avatarViejo)>0:
                 avatarViejo[0].delete()
             avatar.save()
-            return render(request , "App/perfil.html", {"avatar":avatar, "mensaje": "Avatar subido correctamente"})
+            return render(request , "Mensajeria/perfil.html", {"avatar":avatar, "mensaje": "Avatar subido correctamente"})
         else:
             return render(request , "App/agregarAvatar.html", {"form":form, "usuario":request.user, "mensaje":"Error al subir imagen"})
     else:
@@ -80,29 +80,7 @@ def login_request(request):
     else:    
         form= AuthenticationForm()
         return render(request, "App/login.html", {"form":form})
-@login_required
-def perfil(request):
-    perfil=Perfil.objects.all()
-    return render(request, "App/perfil.html", {"perfil": perfil, "avatar": obtenerAvatar(request)})
-@login_required
-def editarPerfil(request):
-    usuario=request.user  
-    if request.method=="POST":
-        form=UserEditForm(request.POST)
-        if form.is_valid():
-            info=form.cleaned_data
-            usuario.email=info["email"]
-            usuario.password1=info["password1"]
-            usuario.password2=info["password2"]
-            usuario.first_name=info["first_name"]
-            usuario.last_name=info["last_name"]
-            usuario.save()
-            return render(request, "App/inicio.html", {"mensaje" : f"Usuario {usuario.username} editado correctamente"})
-        else:
-            return render(request, "App/editarPerfil.html", {"form":form , "nombreusuario": usuario.username})    
-    else:
-        form=UserEditForm(instance=usuario)
-        return render(request, "App/editarPerfil.html", {"form":form , "nombreusuario": usuario.username})
+
 #--------------------------------- BUSCADORES --------------------------------------#
 @login_required
 def buscarBlog(request):
@@ -134,7 +112,7 @@ def crearBlog(request):
             imagen=informacion["imagen"]
             blog=Blog(titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen)#creo el blog
             blog.save()#lo guardo
-            return render (request, "App/blogs.html" ,{"mensaje": "Blog subido correctamente"})#y lo envio a donde lo hice bien
+            return render (request, "App/blogs.html" ,{"mensaje": "Blog subido correctamente", "mensaje2":"Mira tu blog en 'Inspeccionar publicaciones'"})#y lo envio a donde lo hice bien
         else:#si salio mal..
             return render (request, "App/crearBlog.html", {"form":form , "mensaje":"Informacio no valida"})#lo vuelvo a mandar y le digo q esta mal hecho
     else:#y si viene por GET
@@ -169,12 +147,6 @@ def editarBlog(request, id):
     else:
         formulario= BlogForm(initial={"titulo":blog.titulo, "subtitulo":blog.subtitulo, "cuerpo":blog.cuerpo, "autor":blog.autor, "fecha":blog.fecha})
         return render(request, "App/editarBlog.html", {"form":formulario, "blog":blog })
-
-#--------------------------------- CREACION DE PERFILES --------------------------------------#
-#--------------------------------- CRUD --------------------------------------#
-@login_required
-def crearPerfil(request):
-    return render(request, "App/crearPerfil.html")
 
 
 

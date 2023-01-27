@@ -50,7 +50,7 @@ class PerfilForm(forms.Form):
     email= forms.EmailField(label="Email")
     descripcion= forms.CharField(label="Descripcion", max_length=60)
     imagen= forms.ImageField(label="Imagen")
-
+    
 
 
 

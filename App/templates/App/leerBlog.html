@@ -12,6 +12,7 @@
 
 {% block subtitulo %}
 <h3>Crea, reorganiza o elimina tus posts!</h3>
+<h2>{{ mensaje }}</h2>
 {% endblock %}
 
 {% block contenido_que_cambia %}
@@ -21,7 +22,6 @@
             <h1> Tus publicaciones</h1>
             <a class="btn btn-dark" href="{% url 'crearBlog' %}">Crea un nuevo blog</a>
             <a class="btn btn-dark" href="http://127.0.0.1:8000/admin/App/blog/">Edicion desde panel de Admin con Ckeditor</a>
-            <h2>{{ mensaje }}</h2>
             <hr>
             {% for k in blog %} 
             <br>
@@ -29,9 +29,9 @@
             <li>Subtitulo: {{ k.subtitulo }}</li>
             <li>Foto: {{ k.imagen }}</li>
             <li><label for="comentario">Cuerpo del articulo:</label></li>
-            <textarea cols="160" rows="10" id="comentario"> {{ k.cuerpo }}</textarea>
+            <p cols="160" rows="10" id="comentario"> {{ k.cuerpo }}</p>
             <li>Autor: {{ k.autor }}</li>
-            <li>Fecha publicado: {{ k.fecha }}</li>
+            <li>Fecha publicado: {{ k.fecha }}</li> 
             <br>
             <a class="btn btn-danger" href="{% url 'eliminarBlog' k.id %}">Eliminar </a>
             <a class="btn btn-success" href="{% url 'editarBlog' k.id %}">Editar</a>
