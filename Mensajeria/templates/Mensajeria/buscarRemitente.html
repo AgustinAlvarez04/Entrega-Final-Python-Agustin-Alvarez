@@ -1,0 +1,26 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Busqueda</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Busqueda del Remitente</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+<h3>{{ mensaje }}</h3>
+<form action="{% url 'busqueda' %}" method="GET">
+    <input type="text" name="remitente" id="remitente" placeholder="Buscar Usuario">
+    <input type="submit" value="Buscar">
+</form>
+{% endblock %}
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
+</section>
+{% endblock %}

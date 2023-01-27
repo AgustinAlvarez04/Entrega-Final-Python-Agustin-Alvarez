@@ -1,0 +1,43 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Lecturas</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Blogs</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>Crea, reorganiza o elimina tus posts!</h3>
+<h2>{{ mensaje }}</h2>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<form action="{% url 'leerInformacion' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}"
+    <article>
+        <ul>
+            <hr>
+            {% for perfil in perfil %} 
+            <br>
+            <li>nombre: {{ perfil.nombre }}</li>
+            <li>apellido: {{ perfil.apellido }}</li>
+            <li>Foto: {{ perfil.imagen }}</li>
+            <li>edad {{ perfil.edad }}</li>
+            <li>descripcion: {{ perfil.descripcion }}</li>
+            <li>email: {{ perfil.email }}</li>
+            <a class="btn btn-danger" href="{% url 'eliminarInformacion' perfil.id %}">Eliminar </a>
+            {% endfor %}
+        </ul>
+    </article>
+</form>
+{% endblock %}
+
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
+</section>
+{% endblock %}

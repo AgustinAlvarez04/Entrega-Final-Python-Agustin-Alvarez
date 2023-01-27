@@ -1,0 +1,42 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Perfil</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Seccion Perfil</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>{{ mensaje }}</h3>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<ul>
+    <h1>Informacion Personal</h1>
+    <a class="btn btn-primary" href="{% url 'editarPerfil'  %}">Editar Datos De Inicio De Sesion</a>
+    <a class="btn btn-primary" href="{% url 'agregarAvatar'  %}">Agregar/Modificar Avatar</a>
+    <a class="btn btn-primary" href="{% url 'msj'  %}">Enviar Mensaje</a>
+    <br><hr>
+        {% for k in perfil %} 
+            <br>
+            <li>Nombre: {{ k.nombre }}</li>
+            <li>Apellido: {{ k.apellido }}</li>
+            <li>Email: {{ k.email }}</li>
+            <li>Edad {{ k.edad }}</li>
+            <li>Descripcion: {{ k.descripcion }}</li>
+            <h3>Avatar: <img src="{{ avatar }}" alt=""></h3>
+        {% endfor %}
+</ul> 
+<form action="{% url 'perfil' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+</form>
+{% endblock %}
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/">Regresar Al Home</a>
+</section>
+{% endblock %}

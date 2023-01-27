@@ -1,0 +1,40 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Lecturas</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Blogs</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>Crea, reorganiza o elimina tus posts!</h3>
+<h2>{{ mensaje }}</h2>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<form action="{% url 'leerMensajes' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}"
+    <article>
+        <ul>
+            <hr>
+            {% for k in mensaje %} 
+            <br>
+            <li>Remitente: {{ k.remitente }}</li>
+            <hr>
+            <li>Mensaje: {{ k.mensaje }}</li>
+            <br>
+            {% endfor %}
+        </ul>
+    </article>
+</form>
+{% endblock %}
+
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
+</section>
+{% endblock %}

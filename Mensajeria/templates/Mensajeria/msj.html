@@ -1,0 +1,43 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Mensajeria</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Seccion Mensajes</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>{{ mensaje }}</h3>
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/buscarRemitente">Buscar Remitente</a>
+</section>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<h3>{{ mensaje }}</h3>
+
+<form action="{% url 'msj' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    <article>
+        <section>
+            <hr>
+            <li>Mensajeria</li>
+            <hr>
+            <li>Para:<input type="text" name="remitente" id="remitente" placeholder="Nombre: "></li>
+            <hr>
+            <li>Mensaje:<input type="text" name="mensaje" id="mensaje" placeholder="Escribir mensaje"></li>
+        </section>
+    </article>
+    <input type="submit" value="Enviar">
+</form>
+
+{% endblock %}
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
+</section>
+{% endblock %}

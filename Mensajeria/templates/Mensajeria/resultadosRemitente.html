@@ -1,0 +1,37 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Resultados Busqueda</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Remitente encontrado:</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+<form action="{% url 'resultadosRemitente' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}"
+</form>
+{% if mensaje %}
+<h2>Mensajes recibidos:</h2>
+{% for k in mensaje %}
+<hr>
+<h3>{{ k.remitente }} - {{ k.mensaje }} </h3>
+<hr>
+{% endfor %}
+
+{% else %}
+
+<h3>No hay resultados similares, vuelve a intentarlo</h3>
+<a class="btn btn-dark" href="{% url 'buscarRemitente' %}">Buscar</a>
+{% endif %}
+{% endblock %}
+
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/msj/">Responder</a>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Añadir Informacion</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Informacion Personal!</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<article>
+    <ul>
+        <h3>{{ mensaje }}</h3>
+        <form action="{% url 'agregarInformacion' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+             </table>
+            <input type="submit" value="Guardar Cambios">
+        </form>
+    </ul>
+</article>
+{% endblock %}
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
+</section>
+{% endblock %}
