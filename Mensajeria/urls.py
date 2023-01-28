@@ -11,7 +11,7 @@ urlpatterns= [
     path("leerMensajes/", leerMensajes, name="leerMensajes"),
     path("busqueda/", busqueda, name="busqueda"),
     path("agregarInformacion/", agregarInformacion, name="agregarInformacion"),
-    path("leerInformacion/<id>", leerInformacion, name="leerInformacion"),
+    path("leerInformacion/", leerInformacion, name="leerInformacion"),
     path("eliminarInformacion/<id>", eliminarInformacion, name="eliminarInformacion"),
 
 ]
