@@ -8,22 +8,22 @@
 
 {% block titulo %}
 <h1 class="mb-5">Formulario de Registro</h1>
+<h3>{{ mensaje }}</h3>
+<h3>{{ mensaje2 }}</h3>
 {% endblock %}
 
 
 {% block contenido_que_cambia %}
-
-<h3>{{ mensaje }}</h3>
-
+<br>
+<h2>Complete los campos vacios con sus datos:</h2>
+<hr>
 <form action="{% url 'register' %}" method="POST"> {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-
+    <br>
     <input type="submit" value="Crear Usuario">
-
 </form>
-
 {% endblock %}
 
 

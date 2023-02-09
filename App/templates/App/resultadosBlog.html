@@ -25,11 +25,13 @@
 {% else %}
 
 <h3>No hay resultados similares, vuelve a intentarlo</h3>
-<a class="btn btn-dark" href="{% url 'buscarBlog' %}">Buscar</a>
+<a class="btn btn-dark btn-xm rounded-pill" href="{% url 'buscarBlog' %}">Buscar</a>
 {% endif %}
 {% endblock %}
 
 
 {% block cambiar_boton_final %}
-
+<section>
+    <a class="btn btn-dark btn-xm rounded-pill" href="http://127.0.0.1:8000/blogs/#">Volver</a>
+</section>
 {% endblock %}

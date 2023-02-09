@@ -14,17 +14,20 @@
     <body>
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
-                {% if user.is_authenticated %}
-                <a class="btn btn-primary" href="{% url 'About' %}">Acerca de Mi</a>
-                <a class="btn btn-primary" href="{% url 'Contact' %}">Contacto</a>
-                <a class="btn btn-primary" href="{% url 'Pages' %}">Blogs</a>
-                <a class="btn btn-dark" target="_blank" href="http://127.0.0.1:8000/admin" >Bienvenido: {{ user.username }}</a>
-                <a class="btn btn-danger" href="{% url 'logout' %}">Cerar sesion</a>
-                <a class="btn btn-success" href="{% url 'perfil' %}">Perfil</a>
-                {% else %}
-                <a class="btn btn-primary" href="{% url 'register' %}">Registrar</a>
-                <a class="btn btn-primary" href="{% url 'login' %}">Ingresar</a>
+                <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'Inicio' %}">Inicio</a>
+            {% if user.is_authenticated %}
+                <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'About' %}">Acerca de Mi</a>
+                <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'Contact' %}">Contacto</a>
+                <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'Pages' %}">Blogs</a>
+                <a class="btn btn-success btn-xm rounded-pill" href="{% url 'perfil' %}">Perfil</a>
+                <a class="btn btn-primary btn-xm rounded-pill" href="{% url 'mensajes'  %}">Enviar Mensaje</a>
+                <a class="btn btn-danger btn-xm rounded-pill" href="{% url 'logout' %}">Cerar sesion</a>
+                {%if user.is_superuser %}
+                <a class="btn btn-dark btn-xm rounded-pill" target="_blank" href="http://127.0.0.1:8000/admin" >Bienvenido: {{ user.username }}</a>
+                {% endif %}
+            {% else %}
+                <a class="btn btn-danger btn-xm rounded-pill" href="{% url 'register' %}">Registrar</a>
+                <a class="btn btn-danger btn-xm rounded-pill" href="{% url 'login' %}">Ingresar</a>
                 {% endif %}
             </div>
         </nav>
@@ -63,9 +66,17 @@
         {% block cambiar_boton_final %}
         <section>
             <a class="btn btn-dark" href="#">Volver Para Arriba</a>
-
-            
         </section>
         {% endblock %}
+
+        <br>
+        <br>
+        <br>
+        
+        <footer class="py-5 bg-black">
+            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/scripts.js"></script>
     </body>
 </html>

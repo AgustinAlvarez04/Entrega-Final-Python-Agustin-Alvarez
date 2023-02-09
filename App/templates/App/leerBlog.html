@@ -20,21 +20,23 @@
     <article>
         <ul>
             <h1> Tus publicaciones</h1>
-            <a class="btn btn-dark" href="{% url 'crearBlog' %}">Crea un nuevo blog</a>
-            <a class="btn btn-dark" href="http://127.0.0.1:8000/admin/App/blog/">Edicion desde panel de Admin con Ckeditor</a>
+            <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'crearBlog' %}">Crea un nuevo blog</a>
+            {%if user.is_superuser %}
+            <a class="btn btn-dark btn-xm rounded-pill" href="http://127.0.0.1:8000/admin/App/blog/">Edicion desde panel de Admin con Ckeditor</a>
+            {% endif %}
             <hr>
             {% for k in blog %} 
             <br>
             <li>Titulo: {{ k.titulo }}</li>
             <li>Subtitulo: {{ k.subtitulo }}</li>
-            <li>Foto: {{ k.imagen }}</li>
+            <li>imagen: <br><img src=" /media/{{ k.imagen }}" alt="{{ k.titulo }}" style="max-width: 50%; max-height: 50%;"></li>
             <li><label for="comentario">Cuerpo del articulo:</label></li>
             <p cols="160" rows="10" id="comentario"> {{ k.cuerpo }}</p>
             <li>Autor: {{ k.autor }}</li>
             <li>Fecha publicado: {{ k.fecha }}</li> 
             <br>
-            <a class="btn btn-danger" href="{% url 'eliminarBlog' k.id %}">Eliminar </a>
-            <a class="btn btn-success" href="{% url 'editarBlog' k.id %}">Editar</a>
+            <a class="btn btn-danger btn-xm rounded-pill" href="{% url 'eliminarBlog' k.id %}">Eliminar </a>
+            <a class="btn btn-success btn-xm rounded-pill" href="{% url 'editarBlog' k.id %}">Editar</a>
             <hr>
             <br>
             {% endfor %}
@@ -47,6 +49,6 @@
 
 {% block cambiar_boton_final %}
 <section>
-    <a class="btn btn-dark" href="http://127.0.0.1:8000/blogs/#">Volver</a>
+    <a class="btn btn-dark btn-xm rounded-pill" href="http://127.0.0.1:8000/blogs/#">Volver</a>
 </section>
 {% endblock %}

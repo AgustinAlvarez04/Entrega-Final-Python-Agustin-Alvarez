@@ -55,7 +55,7 @@ def register(request):
         if form.is_valid():
             username= form.cleaned_data.get("username")
             form.save()
-            return render(request, "App/register.html", {"mensaje": f"Usuario {username} creado correctamente"})
+            return render(request, "App/register.html", {"mensaje": f"Usuario {username} creado correctamente", "mensaje2": "Ya puede loguearse"})
         else:
             return render(request, "App/register.html", {"form": form, "mensaje":"Error al crear usuario"})
     else:
@@ -72,7 +72,7 @@ def login_request(request):
             usuario=authenticate(username=usuario, password=clave)
             if usuario is not None:
                 login(request, usuario)
-                return render(request, "App/inicio.html", {"mensaje":f"Usuario {usuario} logeuado correctamente"})
+                return render(request, "Mensajeria/perfil.html", {"mensaje":f"Usuario {usuario} logueado correctamente"})
             else:
                 return render(request, "App/login.html", {"form":form, "mensaje":"Usuario o contraseña incorrectos"})
         else:
@@ -109,7 +109,7 @@ def crearBlog(request):
             cuerpo=informacion["cuerpo"]
             autor=informacion["autor"]
             fecha=informacion["fecha"]
-            imagen=informacion["imagen"]
+            imagen=request.FILES["imagen"]
             blog=Blog(titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen)#creo el blog
             blog.save()#lo guardo
             return render (request, "App/blogs.html" ,{"mensaje": "Blog subido correctamente", "mensaje2":"Mira tu blog en 'Inspeccionar publicaciones'"})#y lo envio a donde lo hice bien
@@ -121,7 +121,7 @@ def crearBlog(request):
 @login_required
 def leerBlog(request):
     blog= Blog.objects.all()
-    return render(request, "App/leerBlog.html", {"blog":blog})
+    return render(request, "App/leerBlog.html", {"blog":blog, 'avatar': obtenerAvatar(request)})
 @login_required
 def eliminarBlog(request, id):
     blog=Blog.objects.get(id=id)
@@ -140,6 +140,7 @@ def editarBlog(request, id):
             blog.cuerpo= info["cuerpo"]
             blog.autor= info["autor"]
             blog.fecha= info["fecha"]
+            blog.imagen= info["imagen"]
             blog.save()
             blog=Blog.objects.all()
             return render(request, "App/leerBlog.html", {"blog":blog, "mensaje": "Articulo editado correctamente"})
@@ -147,9 +148,3 @@ def editarBlog(request, id):
     else:
         formulario= BlogForm(initial={"titulo":blog.titulo, "subtitulo":blog.subtitulo, "cuerpo":blog.cuerpo, "autor":blog.autor, "fecha":blog.fecha})
         return render(request, "App/editarBlog.html", {"form":formulario, "blog":blog })
-
-
-
-
-
-

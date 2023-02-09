@@ -8,10 +8,10 @@
 
 {% block subtitulo %}
 <h3>Breve vistaso a lo que encontraras por aqui</h3>
+{{ mensaje }}
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<img src="{{ avatar }}" alt="">
         <section class="showcase">
             <div class="container-fluid p-0">
         <section class="testimonials text-center bg-light">
@@ -42,3 +42,9 @@
  
 {% endblock %}
 
+{% block cambiar_boton_final %}
+    <section>
+        <a class="btn btn-dark btn-xm rounded-pill" href="#">Volver Para Arriba</a>
+        <a class="btn btn-dark btn-xm rounded-pill" href="http://127.0.0.1:8000/about">Siguiente pagina</a>
+    </section>
+{% endblock %}
