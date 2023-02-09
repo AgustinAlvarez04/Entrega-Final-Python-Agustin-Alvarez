@@ -7,7 +7,7 @@ podras leer sobre mi en su respectivo apartado y un poco de como hice esta pagin
 Video demostracion; https://www.youtube.com/watch?v=quEwJbiz--4
 
 LOS CASOS DE PRUEBA FUERON ARREGLADOS.
-
+---------------------------------------------
 jueves 9 de febrero a las 17:45 p.m.
 CAMBIOS REALIZADOS:
 
@@ -20,3 +20,8 @@ CAMBIOS REALIZADOS:
 -Sistema de mensajeria mejorado.
 -Informacion de perfil mejorada.
 -Panel admin unicamente para superusers
+
+Video demostracion Trabajo Modificado: https://www.youtube.com/watch?v=sSZFfWT45Qo
+Pd: en este video no hable porque no contaba con un microfono, espero se puedan entender los cambios realizados.
+
+MUCHAS GRACIAS POR SU ATENCION!
