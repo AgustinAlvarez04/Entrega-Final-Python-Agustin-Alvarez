@@ -1,0 +1,32 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Añadir Informacion</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Informacion Personal!</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<div>
+    <form style="padding-left: 10%; padding-top: 1em;" action="{% url 'agregarUrl' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
+        <table>
+            {{ form.as_table }} 
+        </table>
+        
+        <div style="padding-left: 2%;">
+            <input class="btn btn-primary btn-xm rounded-pill mt-5" type="submit" value="Agregar">
+            <a class="btn btn-primary btn-xm rounded-pill mt-5" href="{% url 'perfil' %}"> Volver </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block cambiar_boton_final %}
+<section>
+    <a class="btn btn-dark btn-xm rounded-pill mt-5" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
+</section>
+{% endblock %}

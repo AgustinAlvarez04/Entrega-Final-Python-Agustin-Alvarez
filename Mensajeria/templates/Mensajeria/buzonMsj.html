@@ -1,0 +1,39 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Mensajeria</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Seccion Mensajes</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>{{ mensaje }}</h3>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+    {% for mensaje in mensajes %}
+        <li style="padding-left: 10%;"> 
+            Mensaje de {{mensaje.usuario}} - {{ mensaje.fecha }}
+            {% if mensaje.leido == False %}
+            <i class="fa-solid fa-envelope"></i>
+            {% else %}
+            <i class="fa-solid fa-envelope-open"></i>
+            {% endif %}
+            <a class="btn btn-primary btn-xm rounded-pill mt-5-1" href="{% url 'verMsj' mensaje.id %}"> Leer</a>
+        </li>
+    {% endfor %}
+    <div style="padding-left: 10%;">
+        <br>
+        <a class="btn btn-primary btn-xm rounded-pill mt-5-1" href="{% url 'mensajes' %}"> Volver </a>
+    </div>
+{% endblock %}
+
+
+{% block cambiar_boton_final %}
+
+{% endblock %}

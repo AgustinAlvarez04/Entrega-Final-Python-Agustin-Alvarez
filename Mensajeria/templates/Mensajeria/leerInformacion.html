@@ -25,8 +25,6 @@
             <li>nombre: {{ perfil.nombre }}</li>
             <li>apellido: {{ perfil.apellido }}</li>
             <li>Foto: {{ perfil.imagen }}</li>
-            <li>edad {{ perfil.edad }}</li>
-            <li>descripcion: {{ perfil.descripcion }}</li>
             <li>email: {{ perfil.email }}</li>
             <a class="btn btn-danger" href="{% url 'eliminarInformacion' perfil.id %}">Eliminar </a>
             {% endfor %}
@@ -38,6 +36,6 @@
 
 {% block cambiar_boton_final %}
 <section>
-    <a class="btn btn-dark" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
+    <a class="btn btn-dark btn-xm rounded-pill mt-5" href="http://127.0.0.1:8000/mensajeria/perfil/">Regresar A Perfil</a>
 </section>
 {% endblock %}

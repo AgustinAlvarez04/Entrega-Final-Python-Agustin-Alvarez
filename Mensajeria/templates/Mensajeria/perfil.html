@@ -16,28 +16,33 @@
 
 {% block contenido_que_cambia %}
 <ul>
+    <br>
     <h1>Informacion Personal</h1>
-    <a class="btn btn-primary" href="{% url 'editarPerfil'  %}">Editar Datos De Inicio De Sesion</a>
-    <a class="btn btn-primary" href="{% url 'agregarAvatar'  %}">Agregar/Modificar Avatar</a>
-    <a class="btn btn-primary" href="{% url 'msj'  %}">Enviar Mensaje</a>
-    <a class="btn btn-primary" href="{% url 'agregarInformacion'  %}">Agregar Informacion Personal</a>
-    <br><hr>
-        {% for k in perfil %} 
-            <br>
-            <li>Nombre: {{ k.nombre }}</li>
-            <li>Apellido: {{ k.apellido }}</li>
-            <li>Email: {{ k.email }}</li>
-            <li>Edad {{ k.edad }}</li>
-            <li>Descripcion: {{ k.descripcion }}</li>
-            <h3>Avatar: <img src="{{ avatar }}" alt=""></h3>
-        {% endfor %}
-</ul> 
-<form action="{% url 'perfil' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-</form>
+    <hr>
+    <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'editarPerfil'  %}">Editar Datos De Inicio De Sesion</a>
+    <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'agregarAvatar'  %}">Agregar/Modificar Avatar</a>
+    <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'agregarDescripcion'  %}">Agregar Descripcion</a>
+    <a class="btn btn-dark btn-xm rounded-pill" href="{% url 'agregarUrl'  %}">Agregar Url</a>
+    <hr>
+    <br>
+    <div style="text-align: center; padding-top: 10px;"> 
+        <img src="{{ avatar }}" class="rounded-circle mx-auto d-block" alt="..." width="200" height="200"> 
+    </div>
+    <div>
+        <div style="padding-left: 10%;">
+            <ul style="padding-left: 10;">
+                <li> {{ user.username }} </li>
+                <li> {{ user.first_name }} </li>
+                <li> {{ user.last_name }} </li>
+                <li> {{ user.email }} </li>
+                <li> {{ descripcion }} </li>
+                <li> {{ url }} </li>
+            </ul>
+        </div>
+    </div>
+</ul>
 {% endblock %}
 
 {% block cambiar_boton_final %}
-<section>
-    <a class="btn btn-dark" href="http://127.0.0.1:8000/">Regresar Al Home</a>
-</section>
+
 {% endblock %}

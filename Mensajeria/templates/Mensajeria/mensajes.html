@@ -1,0 +1,26 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Mensajeria</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Seccion Mensajes</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>{{ mensaje }}</h3>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+    <div style="padding-left: 5%; padding-top: 1%; padding-bottom: 1%;">
+        <a class="btn btn-primary btn-xm rounded-pill mt-5-1" href="{% url 'enviarMsj' %}"> Mensaje Nuevo </a>
+        <a class="btn btn-primary btn-xm rounded-pill mt-5-1" href="{% url 'buzonMsj' %}"> Ver Mensajes </a>
+    </div>
+{% endblock %}
+
+{% block cambiar_boton_final %}
+
+{% endblock %}

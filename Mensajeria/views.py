@@ -35,11 +35,63 @@ def obtenerAvatar(request):
     else:
         avatar="/media/avatars/homero.png"
     return avatar
-
 @login_required
-def perfil(request):
-    perfil=Perfil.objects.all()
-    return render(request, "Mensajeria/perfil.html", {"perfil": perfil, "avatar": obtenerAvatar(request)})
+def enviarMsj(request):
+    if request.method == 'POST':
+        form = MsjForm(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            usuario = request.user
+            receptor = info['receptor']
+            mensaje = info['mensaje']
+            mensaje = Msjs(usuario=usuario, receptor=receptor, mensaje=mensaje)
+            mensaje.save()
+            return render(request, 'Mensajeria/mensajes.html', {'mensaje': 'mensaje enviado correctamente', 'avatar': obtenerAvatar(request)})
+        else:
+            return render(request, 'Mensajeria/enviarMsj.html', {'form': form, 'mensaje': 'mensaje no enviado', 'avatar': obtenerAvatar(request)})
+    else:
+        form = MsjForm()
+        return render(request, 'Mensajeria/enviarMsj.html', {'form': form, 'avatar': obtenerAvatar(request)})
+@login_required
+def mensajes(request):
+    return render(request, 'Mensajeria/mensajes.html', {'avatar': obtenerAvatar(request)})
+@login_required
+def buzonMsj(request):
+    if request.user.is_authenticated:
+        mensajes = Msjs.objects.filter(receptor=request.user)
+        if len(mensajes) != 0:
+            return render(request, 'Mensajeria/buzonMsj.html', {'mensajes': mensajes, 'avatar': obtenerAvatar(request)})
+        else:
+            return render(request, 'Mensajeria/buzonMsj.html', {'mensaje': 'No hay mensajes', 'avatar': obtenerAvatar(request)})
+@login_required
+def verMsj(request, id):
+    mensaje = Msjs.objects.get(id=id)
+    mensaje.leido = True
+    mensaje.save()
+    return render(request, 'Mensajeria/verMsj.html', {'mensaje': mensaje, 'avatar': obtenerAvatar(request)})
+@login_required
+def eliminarMsj(request, id):
+    mensaje = Msjs.objects.get(id=id)
+    mensaje.delete()
+    return render(request, 'Mensajeria/mensajes.html', {'mensaje': 'mensaje eliminado correctamente', 'avatar': obtenerAvatar(request)})
+@login_required
+def responderMsj(request, id):
+    mensaje = Msjs.objects.get(id=id)
+    if request.method == 'POST':
+        form = MsjForm(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            usuario = request.user
+            receptor = info['receptor']
+            mensaje = info['mensaje']
+            mensaje = Msjs(usuario=usuario, receptor=receptor, mensaje=mensaje)
+            mensaje.save()
+            return render(request, 'App/inicio.html', {'mensaje': 'mensaje enviado correctamente', 'avatar': obtenerAvatar(request)})
+        else:
+            return render(request, 'Mensajeria/enviarMsj.html', {'form': form, 'mensaje': 'mensaje no enviado', 'avatar': obtenerAvatar(request)})
+    else:
+        form = MsjForm()
+        return render(request, 'Mensajeria/enviarMsj.html', {'form': form, 'mensaje': mensaje, 'avatar': obtenerAvatar(request)})
 @login_required
 def editarPerfil(request):
     usuario=request.user  
@@ -61,38 +113,98 @@ def editarPerfil(request):
         return render(request, "Mensajeria/editarPerfil.html", {"form":form , "nombreusuario": usuario.username})
 
 @login_required
-def msj(request):
-    if request.method=="POST":
-        form= MensajeForm(request.POST)
+def agregarUrl (request):
+    if request.method == 'POST':
+        form = Formulario_url(request.POST)
         if form.is_valid():
-            informacion=form.cleaned_data
-            remitente=informacion['remitente']
-            mensaje=informacion['mensaje']
-            mensajes=Mensaje(remitente=remitente, mensaje=mensaje)
-            mensajes.save()
-            return render(request, "Mensajeria/msj.html", {"mensaje":"Mensaje enviado"})
+            url = Url(usuario=request.user, url=request.POST['url'])
+            urlViejo= Url.objects.filter(usuario=request.user)
+            if len(urlViejo)>0:
+                urlViejo[0].delete()
+            url.save()
+            return render (request, 'Mensajeria/perfil.html', {'form': form, 'avatar': obtenerAvatar(request), 'url' : obtener_url(request), 'mensaje': 'Url agregada exitosamente'})
         else:
-            return render(request, "Mensajeria/msj.html", {"mensaje":"Informacion no valida"})
+            return render (request, 'Mensajeria/agregarUrl.html', {'form': form, 'avatar': obtenerAvatar(request), 'mensaje': 'Error al agregar la url'})
     else:
-        formulario=MensajeForm()
-        return render(request, "Mensajeria/msj.html", {"form":formulario})
+        form = Formulario_url()
+        return render(request, 'Mensajeria/agregarUrl.html', {'form': form, 'avatar': obtenerAvatar(request)})
+
 @login_required
-def buscarRemitente(request):
-    return render(request, "Mensajeria/buscarRemitente.html")
-@login_required
-def busqueda(request):
-    remitente=request.GET['remitente']
-    if remitente!="":
-        mensaje=Mensaje.objects.filter(remitente__icontains=remitente)
-        return render(request, "Mensajeria/resultadosRemitente.html", {"mensaje":mensaje})
+def obtener_url(request):
+    lista = Url.objects.filter(usuario=request.user)
+    if len(lista) != 0:
+        url = lista[0].url
     else:
-        return render(request, "Mensajeria/buscarRemitente.html", {"mensaje":"Ingresa un titulo para buscar!"})
+        url = ''
+    return url
+
 @login_required
-def resultadosRemitente(request):
-    return render(request, 'Mensajeria/resultadosRemitente.html')  
+def agregarDescripcion (request):
+    if request.method == 'POST':
+        form = Formulario_descripcion(request.POST)
+        if form.is_valid():
+            descripcion = Descripcion(usuario=request.user, descripcion=request.POST['descripcion'])
+            descripcionVieja= Descripcion.objects.filter(usuario=request.user)
+            if len(descripcionVieja)>0:
+                descripcionVieja[0].delete()
+            descripcion.save()
+            return render (request, 'Mensajeria/perfil.html', {'form': form, 'avatar': obtenerAvatar(request), 'mensaje': 'Descripcion agregada exitosamente', 'descripcion': obtener_descripcion(request)})
+        else:
+            return render (request, 'Mensajeria/agregarDescripcion.html', {'form': form, 'avatar': obtenerAvatar(request), 'mensaje': 'Error al agregar la descripcion'})
+    else:
+        form = Formulario_descripcion()
+        return render(request, 'Mensajeria/agregarDescripcion.html', {'form': form, 'avatar': obtenerAvatar(request)})
+
 @login_required
-def leerMensajes(request):
-    return render(request, "Mensajeria/leerMensajes.html")
+def obtener_descripcion(request):
+    lista = Descripcion.objects.filter(usuario=request.user)
+    if len(lista) != 0:
+        descripcion = lista[0].descripcion
+    else:
+        descripcion = ''
+    return descripcion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@login_required
+def perfil(request):
+    perfil=Perfil.objects.all()
+    return render(request, "Mensajeria/perfil.html", {"perfil": perfil, "avatar": obtenerAvatar(request)})
 @login_required
 def agregarInformacion(request):
     if request.method=="POST":

@@ -1,0 +1,30 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block title %}
+<title>Mensajeria</title>
+{% endblock %}
+
+{% block titulo %}
+<h1 class="mb-5">Seccion Mensajes</h1>
+{% endblock %}
+
+{% block subtitulo %}
+<h3>{{ mensaje }}</h3>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+    <form action="{% url 'enviarMsj' %}" method="POST" style="padding-left: 10%;"> {% csrf_token %} 
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div style="padding-left: 5%;">
+            <input class="btn btn-primary btn-xm rounded-pill mt-5" type="submit" value="Enviar">
+        </div>
+    </form>
+{% endblock %}
+
+{% block cambiar_boton_final %}
+
+{% endblock %}
