@@ -100,24 +100,24 @@ def resultadosBlog(request):
 #--------------------------------- CRUD --------------------------------------#
 @login_required
 def crearBlog(request):
-    if request.method=="POST": #si viene por post..
-        form= BlogForm(request.POST, request.FILES) #guardo la informacion
-        if form.is_valid(): #si es valido..
-            informacion=form.cleaned_data#guardo y paso la info de formulario a diccionario
-            titulo=informacion["titulo"] #armo el formulario
+    if request.method=="POST":
+        form= BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            titulo=informacion["titulo"]
             subtitulo=informacion["subtitulo"]
             cuerpo=informacion["cuerpo"]
             autor=informacion["autor"]
             fecha=informacion["fecha"]
             imagen=request.FILES["imagen"]
-            blog=Blog(titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen)#creo el blog
-            blog.save()#lo guardo
-            return render (request, "App/blogs.html" ,{"mensaje": "Blog subido correctamente", "mensaje2":"Mira tu blog en 'Inspeccionar publicaciones'"})#y lo envio a donde lo hice bien
-        else:#si salio mal..
-            return render (request, "App/crearBlog.html", {"form":form , "mensaje":"Informacio no valida"})#lo vuelvo a mandar y le digo q esta mal hecho
-    else:#y si viene por GET
-        formulario= BlogForm()#creo el formulario vacio
-        return render (request, "App/crearBlog.html", {"form":formulario})#y se lo mando
+            blog=Blog(titulo=titulo, subtitulo=subtitulo, cuerpo=cuerpo, autor=autor, fecha=fecha, imagen=imagen)
+            blog.save()
+            return render (request, "App/blogs.html" ,{"mensaje": "Blog subido correctamente", "mensaje2":"Mira tu blog en 'Inspeccionar publicaciones'"})
+        else:
+            return render (request, "App/crearBlog.html", {"form":form , "mensaje":"Informacio no valida"})
+    else:
+        formulario= BlogForm()
+        return render (request, "App/crearBlog.html", {"form":formulario})
 @login_required
 def leerBlog(request):
     blog= Blog.objects.all()
